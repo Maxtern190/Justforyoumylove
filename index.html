@@ -2,89 +2,96 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Irha Awan</title>
 <style>
-body {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Arial', sans-serif;
-  overflow: hidden;
-}
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  animation: pop 1s ease;
-}
-@keyframes pop {
-  0% {transform: scale(0.5); opacity:0;}
-  100% {transform: scale(1); opacity:1;}
-}
-h1 { color:#ff4d6d; }
-button {
-  padding: 12px 25px;
-  margin: 10px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.yes { background:#ff4d6d; color:white; }
-.no { background:#ddd; }
-#result {
-  margin-top:20px;
-  font-size:18px;
-  color:#ff4d6d;
-}
-.heart {
-  position: absolute;
-  color: #ff4d6d;
-  animation: float 6s infinite;
-}
-@keyframes float {
-  0% {transform: translateY(0); opacity:1;}
-  100% {transform: translateY(-800px); opacity:0;}
-}
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #ffe6f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+  .slide {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 1s;
+  }
+  .active { display: block; }
+  button {
+    margin: 20px 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s;
+  }
+  button:hover { transform: scale(1.1); }
+  #noBtn { position: relative; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95);}
+    to { opacity: 1; transform: scale(1);}
+  }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <h1>Hey ❤️</h1>
-  <p>I made this just for you…</p>
-  <p>You make my days better 🌸</p>
+<!-- Slide 1 -->
+<div class="slide active" id="slide1">
+  <h1>Assalamualaikum my Love 💖</h1>
+  <p>My Malkin Miss Irha Awan jii</p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+  <p>Me apse kuch kehna chahta hu,</p>
+  <p>Toh please aage Button press karke dekhiye 👀</p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" id="slide3">
+  <p>Me nahi janta ki hum kabhi ek hi sakte hai ya nahi,</p>
+  <p>But I believe if we try then I'm sure hum ek sath a sakte hai 💕</p>
+  <p>And You are Very special to me 😍</p>
+  <p>I respect you from my Heart and I promise me humesha bas apka hi rahunga ❤️</p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" id="slide4">
   <h2>Will you be mine?</h2>
-
-  <button class="yes" onclick="yesClick()">YES 💖</button>
-  <button class="no" onclick="noClick()">NO 🙈</button>
-
-  <div id="result"></div>
+  <p>And Do you love me?</p>
+  <button onclick="yesClick()">Yes 😍</button>
+  <button id="noBtn" onmouseover="noMove()">No 😅</button>
+  <div id="result" style="margin-top:20px; font-size:18px;"></div>
 </div>
 
 <script>
-function yesClick(){
-  document.getElementById("result").innerHTML =
-  "You just made me the happiest 🥹❤️";
-}
-function noClick(){
-  document.getElementById("result").innerHTML =
-  "It’s okay… I respect your honesty 💙";
+let currentSlide = 1;
+
+function nextSlide() {
+  document.getElementById("slide"+currentSlide).classList.remove("active");
+  currentSlide++;
+  document.getElementById("slide"+currentSlide).classList.add("active");
 }
 
-// hearts
-for(let i=0;i<20;i++){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(20+Math.random()*20)+"px";
-  h.style.animationDuration=(4+Math.random()*4)+"s";
-  document.body.appendChild(h);
+// Slide 4 buttons logic
+function yesClick() {
+  document.getElementById("result").innerHTML = "You just made me the happiest 😍❤️";
+}
+
+function noMove() {
+  let btn = document.getElementById("noBtn");
+  btn.style.position = "absolute";
+  btn.style.top = Math.random()*80 + "vh";
+  btn.style.left = Math.random()*70 + "vw";
 }
 </script>
 
